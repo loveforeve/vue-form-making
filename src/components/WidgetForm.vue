@@ -53,6 +53,47 @@
                   </div>
                 </el-row>
             </template>
+             <template v-else-if="element.type == 'grid2'">
+                <el-row class="widget-col widget-view" v-if="element && element.key" :key="element.key"
+                  type="flex"
+                  :class="{active: selectWidget.key == element.key}"
+                  :gutter="element.options.gutter ? element.options.gutter : 0"
+                  :justify="element.options.justify"
+                  :align="element.options.align"
+                  @click.native="handleSelectWidget(index)">
+                  <el-col  v-for="(col, colIndex) in element.columns" :key="colIndex" :span="col.span ? col.span : 0">
+
+                      <draggable
+                        v-model="col.list"
+                        :no-transition-on-drag="true"
+                        v-bind="{group:'people', ghostClass: 'ghost',animation: 200, handle: '.drag-widget'}"
+                        @end="handleMoveEnd"
+                        @add="handleWidgetColAdd($event, element, colIndex)"
+                      >
+                        <transition-group name="fade" tag="div" class="widget-col-list">
+                          <widget-form-item
+                            v-for="(el, i) in col.list"
+                            :key="el.key"
+                            v-if="el.key"
+                            :element="el"
+                            :select.sync="selectWidget"
+                            :index="i"
+                            :data="col">
+                          </widget-form-item>
+                        </transition-group>
+
+                      </draggable>
+                  </el-col>
+                  <div class="widget-view-action widget-col-action" v-if="selectWidget.key == element.key">
+
+                    <i class="iconfont icon-trash" @click.stop="handleWidgetDelete(index)"></i>
+                  </div>
+
+                  <div class="widget-view-drag widget-col-drag" v-if="selectWidget.key == element.key">
+                    <i class="iconfont icon-drag drag-widget"></i>
+                  </div>
+                </el-row>
+            </template>
             <template v-else>
               <widget-form-item v-if="element && element.key"  :key="element.key" :element="element" :select.sync="selectWidget" :index="index" :data="data"></widget-form-item>
             </template>

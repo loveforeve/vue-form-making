@@ -203,7 +203,7 @@ export default {
     },
     basicFields: {
       type: Array,
-      default: () => ['input', 'textarea', 'number', 'radio', 'checkbox', 'time', 'date', 'rate', 'color', 'select', 'switch', 'slider']
+      default: () => ['label', 'input', 'textarea', 'number', 'radio', 'checkbox', 'time', 'date', 'rate', 'color', 'select', 'switch', 'slider']
     },
     advanceFields: {
       type: Array,
@@ -211,7 +211,7 @@ export default {
     },
     layoutFields: {
       type: Array,
-      default: () => ['grid']
+      default: () => ['grid', 'grid2']
     }
   },
   data () {

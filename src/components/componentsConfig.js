@@ -1,5 +1,14 @@
 export const basicComponents = [
   {
+    type: 'label',
+    name: '标题标签',
+    icon: 'icon-input',
+    options: {
+      labelWidth: 100,
+      align: 'left'
+    }
+  },
+  {
     type: 'input',
     name: '单行文本',
     icon: 'icon-input',
@@ -306,6 +315,55 @@ export const layoutComponents = [
       },
       {
         span: 12,
+        list: []
+      }
+    ],
+    options: {
+      gutter: 0,
+      justify: 'start',
+      align: 'top'
+    }
+  },
+  {
+    type: 'grid',
+    name: '栅格布局3',
+    icon: 'icon-grid-',
+    columns: [
+      {
+        span: 8,
+        list: []
+      },
+      {
+        span: 8,
+        list: []
+      },
+      {
+        span: 8,
+        list: []
+      }
+    ],
+    options: {
+      gutter: 0,
+      justify: 'start',
+      align: 'top'
+    }
+  },
+
+  {
+    type: 'grid2',
+    name: '栅格布局2行',
+    icon: 'icon-grid-',
+    columns: [
+      {
+        span: 8,
+        list: []
+      },
+      {
+        span: 8,
+        list: []
+      },
+      {
+        span: 8,
         list: []
       }
     ],
